@@ -102,6 +102,61 @@
         }
 
         /* ═══════════════════════════════════════
+           SOCIAL ICONS ROW (entre nom et intro)
+           ═══════════════════════════════════════ */
+        .social-icons-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.9rem;
+            margin-bottom: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon-link {
+            position: relative;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            padding: 3px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .social-icon-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            padding: 2px;
+            background: conic-gradient(from var(--angle), var(--pink), var(--violet), var(--mid), var(--pink));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: spin 3s linear infinite;
+        }
+
+        .social-icon-link:nth-child(2)::before { animation-delay: -0.6s; }
+        .social-icon-link:nth-child(3)::before { animation-delay: -1.2s; }
+        .social-icon-link:nth-child(4)::before { animation-delay: -1.8s; }
+        .social-icon-link:nth-child(5)::before { animation-delay: -2.4s; }
+
+        .social-icon-link:hover {
+            transform: scale(1.2) translateY(-4px);
+            box-shadow:
+                0 6px 20px rgba(255, 245, 235, 0.4),
+                0 0 40px rgba(237, 224, 212, 0.2);
+        }
+
+        .social-icon-link svg { width: 24px; height: 24px; position: relative; z-index: 1; }
+
+        /* ═══════════════════════════════════════
            INTRO
            ═══════════════════════════════════════ */
         .intro {
@@ -136,6 +191,13 @@
             color: var(--pink);
             -webkit-text-fill-color: var(--pink);
             font-weight: 700;
+        }
+
+        .meta-logo-block {
+            display: block;
+            margin: 0.8rem auto;
+            height: 2rem;
+            width: auto;
         }
 
         /* ═══════════════════════════════════════
@@ -201,6 +263,63 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+        }
+
+        /* ═══════════════════════════════════════
+           TELEGRAM BUTTON
+           ═══════════════════════════════════════ */
+        .telegram-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            background: rgba(8, 3, 12, 0.92);
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid rgba(38, 165, 228, 0.5);
+        }
+
+        .telegram-btn:hover {
+            transform: scale(1.06) translateY(-3px);
+            box-shadow:
+                0 8px 30px rgba(38, 165, 228, 0.35),
+                0 0 60px rgba(38, 165, 228, 0.15);
+            border-color: #26A5E4;
+        }
+
+        .telegram-btn svg {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+
+        .telegram-btn-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.15rem;
+        }
+
+        .telegram-btn-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .telegram-btn-sub {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            font-weight: 400;
+        }
+
+        .telegram-btn .bubble-arrow {
+            font-size: 1.5rem;
+            color: #26A5E4;
         }
 
         /* ═══════════════════════════════════════
@@ -399,6 +518,12 @@
             .bubble { padding: 0.8rem 1rem; gap: 0.7rem; }
             .bubble-icon { width: 36px; height: 36px; }
             .bubble-icon svg { width: 18px; height: 18px; }
+            .social-icons-row { gap: 0.6rem; }
+            .social-icon-link { width: 44px; height: 44px; }
+            .social-icon-link svg { width: 20px; height: 20px; }
+            .telegram-btn { padding: 0.9rem 1.5rem; gap: 0.8rem; }
+            .telegram-btn svg { width: 28px; height: 28px; }
+            .telegram-btn-name { font-size: 1rem; }
         }
 
         @media (min-width: 768px) {
@@ -420,11 +545,31 @@
 
             <h1 class="name fade-in">Maya Alves</h1>
 
+            <!-- SOCIAL ICONS ROW -->
+            <div class="social-icons-row fade-in d1">
+                <a href="https://www.tiktok.com/@maya_alves_0o?_r=1&_t=ZN-96g059PhaHG" target="_blank" rel="noopener" class="social-icon-link" title="TikTok @maya_alves_0o">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M16.6 5.82s.51.64 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z" fill="url(#tkr1)"/><defs><linearGradient id="tkr1" x1="4" y1="3" x2="20" y2="21"><stop stop-color="#00f2ea"/><stop offset="1" stop-color="#ff0050"/></linearGradient></defs></svg>
+                </a>
+                <a href="https://www.tiktok.com/@maya_alves_oo?_r=1&_t=ZN-96g07wkcLpu" target="_blank" rel="noopener" class="social-icon-link" title="TikTok @maya_alves_oo">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M16.6 5.82s.51.64 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z" fill="url(#tkr2)"/><defs><linearGradient id="tkr2" x1="4" y1="3" x2="20" y2="21"><stop stop-color="#ff0050"/><stop offset="1" stop-color="#00f2ea"/></linearGradient></defs></svg>
+                </a>
+                <a href="https://www.instagram.com/maya_alves_oo?igsh=ZWJwY3YwYjgwb3My" target="_blank" rel="noopener" class="social-icon-link" title="Instagram @maya_alves_oo">
+                    <svg viewBox="0 0 24 24"><defs><linearGradient id="igr" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#feda75"/><stop offset="25%" stop-color="#fa7e1e"/><stop offset="50%" stop-color="#d62976"/><stop offset="75%" stop-color="#962fbf"/><stop offset="100%" stop-color="#4f5bd5"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="url(#igr)" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="url(#igr)" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="url(#igr)"/></svg>
+                </a>
+                <a href="https://www.reddit.com/user/Maya_Alves_Rvl/" target="_blank" rel="noopener" class="social-icon-link" title="Reddit u/Maya_Alves_Rvl">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FF4500"/><path d="M18.5 10.8c0-.83-.67-1.5-1.5-1.5-.4 0-.76.16-1.03.42-1.01-.72-2.38-1.18-3.9-1.24l.72-3.37 2.32.5a1.07 1.07 0 1 0 .12-.56l-2.6-.56a.3.3 0 0 0-.35.23l-.8 3.76c-1.56.04-2.96.5-3.99 1.24A1.49 1.49 0 0 0 5 10.8c0 .55.3 1.03.74 1.29a2.72 2.72 0 0 0-.04.47c0 2.37 2.76 4.3 6.17 4.3 3.4 0 6.17-1.93 6.17-4.3 0-.16-.02-.32-.04-.47.46-.26.76-.74.76-1.29z" fill="white"/><circle cx="9.5" cy="12" r="1" fill="#FF4500"/><circle cx="14.5" cy="12" r="1" fill="#FF4500"/><path d="M9.8 14.8s.65.82 2.2.82 2.2-.82 2.2-.82" fill="none" stroke="#FF4500" stroke-width=".6" stroke-linecap="round"/></svg>
+                </a>
+                <a href="https://x.com/MayaAlvesRvl" target="_blank" rel="noopener" class="social-icon-link" title="X @MayaAlvesRvl">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#ffffff"/></svg>
+                </a>
+            </div>
+
             <!-- INTRO -->
-            <div class="intro fade-in d1">
+            <div class="intro fade-in d2">
                 <h2 class="intro-title">J'ai besoin de ton soutien</h2>
+                <svg class="meta-logo-block" viewBox="0 0 950 192" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="mgl1" x1="61" y1="117" x2="259" y2="127" gradientUnits="userSpaceOnUse"><stop stop-color="#0064e1" offset="0"/><stop stop-color="#0064e1" offset="0.4"/><stop stop-color="#0073ee" offset="0.83"/><stop stop-color="#0082fb" offset="1"/></linearGradient><linearGradient id="mgl2" x1="45" y1="139" x2="45" y2="66" gradientUnits="userSpaceOnUse"><stop stop-color="#0082fb" offset="0"/><stop stop-color="#0064e0" offset="1"/></linearGradient></defs><path fill="#0081fb" d="m31.06,125.96c0,10.98 2.41,19.41 5.56,24.51 4.13,6.68 10.29,9.51 16.57,9.51 8.1,0 15.51-2.01 29.79-21.76 11.44-15.83 24.92-38.05 33.99-51.98l15.36-23.6c10.67-16.39 23.02-34.61 37.18-46.96 11.56-10.08 24.03-15.68 36.58-15.68 21.07,0 41.14,12.21 56.5,35.11 16.81,25.08 24.97,56.67 24.97,89.27 0,19.38-3.82,33.62-10.32,44.87-6.28,10.88-18.52,21.75-39.11,21.75l0-31.02c17.63,0 22.03-16.2 22.03-34.74 0-26.42-6.16-55.74-19.73-76.69-9.63-14.86-22.11-23.94-35.84-23.94-14.85,0-26.8,11.2-40.23,31.17-7.14,10.61-14.47,23.54-22.7,38.13l-9.06,16.05c-18.2,32.27-22.81,39.62-31.91,51.75-15.95,21.24-29.57,29.29-47.5,29.29-21.27,0-34.72-9.21-43.05-23.09-6.8-11.31-10.14-26.15-10.14-43.06z"/><path fill="url(#mgl1)" d="m24.49,37.3c14.24-21.95 34.79-37.3 58.36-37.3 13.65,0 27.22,4.04 41.39,15.61 15.5,12.65 32.02,33.48 52.63,67.81l7.39,12.32c17.84,29.72 27.99,45.01 33.93,52.22 7.64,9.26 12.99,12.02 19.94,12.02 17.63,0 22.03-16.2 22.03-34.74l27.4-.86c0,19.38-3.82,33.62-10.32,44.87-6.28,10.88-18.52,21.75-39.11,21.75-12.8,0-24.14-2.78-36.68-14.61-9.64-9.08-20.91-25.21-29.58-39.71l-25.79-43.08c-12.94-21.62-24.81-37.74-31.68-45.04-7.39-7.85-16.89-17.33-32.05-17.33-12.27,0-22.69,8.61-31.41,21.78z"/><path fill="url(#mgl2)" d="m82.35,31.23c-12.27,0-22.69,8.61-31.41,21.78-12.33,18.61-19.88,46.33-19.88,72.95 0,10.98 2.41,19.41 5.56,24.51l-26.48,17.44c-6.8-11.31-10.14-26.15-10.14-43.06 0-30.75 8.44-62.8 24.49-87.55 14.24-21.95 34.79-37.3 58.36-37.3z"/><path fill="#ffffff" d="m347.94,6.04h35.93l61.09,110.52 61.1-110.52h35.15v181.6h-29.31v-139.18l-53.58,96.38h-27.5l-53.57-96.38v139.18h-29.31z m285.11,67.71c-21.02,0-33.68,15.82-36.71,35.41h71.34c-1.47-20.18-13.11-35.41-34.63-35.41z m-65.77,46.57c0-41.22 26.64-71.22 66.28-71.22 38.99,0 62.27,29.62 62.27,73.42v8.05h-99.49c3.53,21.31 17.67,35.67 40.47,35.67 18.19,0 29.56-5.55 40.34-15.7l15.57,19.07c-14.67,13.49-33.33,21.27-56.95,21.27-42.91,0-68.49-31.29-68.49-70.56z m164.09-43.97h-26.98v-24h26.98v-39.69h28.28v39.69h40.99v24h-40.99v60.83c0,20.77 6.64,28.15 22.96,28.15 7.45,0 11.72-.64 18.03-1.69v23.74c-7.86,2.22-15.36,3.24-23.48,3.24-30.53,0-45.79-16.68-45.79-50.07z m188.35,23.34c-5.68-14.34-18.35-24.9-36.97-24.9-24.2,0-39.69,17.17-39.69,45.14 0,27.27 14.26,45.27 38.53,45.27 19.08,0 32.7-11.1 38.13-24.91z m28.28,87.95h-27.76v-18.94c-7.76,11.15-21.88,22.18-44.75,22.18-36.78,0-61.36-30.79-61.36-70.95 0-40.54 25.17-70.83 62.92-70.83 18.66,0 33.3,7.46 43.19,20.63v-17.38h27.76z"/></svg>
                 <p class="intro-text">
-                    Meta est dur avec moi en ce moment...<br><br>
+                    est dur avec moi en ce moment...<br><br>
                     <strong>Je t'offre un média privé</strong> si tu respectes ces 2 étapes.
                 </p>
             </div>
@@ -433,44 +578,15 @@
             <div class="neon-card fade-in">
                 <div class="neon-card-inner">
                     <span class="step-label">Étape 1</span>
-                    <h3 class="step-title">Rejoins tous mes réseaux</h3>
-                    <div class="bubbles">
-                        <div class="neon-bubble">
-                            <a href="https://www.tiktok.com/@maya_alves_0o?_r=1&_t=ZN-96g059PhaHG" target="_blank" rel="noopener" class="bubble">
-                                <div class="bubble-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M16.6 5.82s.51.64 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z" fill="url(#tk1)"/><defs><linearGradient id="tk1" x1="4" y1="3" x2="20" y2="21"><stop stop-color="#00f2ea"/><stop offset="1" stop-color="#ff0050"/></linearGradient></defs></svg></div>
-                                <div class="bubble-info"><span class="bubble-name">TikTok</span><span class="bubble-handle">@maya_alves_0o</span></div>
-                                <span class="bubble-arrow">&rsaquo;</span>
-                            </a>
+                    <h3 class="step-title">Rejoins mon canal Telegram</h3>
+                    <a href="https://t.me/+2vFsTFYOqf44NGY0" target="_blank" rel="noopener" class="telegram-btn">
+                        <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" fill="#26A5E4"/></svg>
+                        <div class="telegram-btn-text">
+                            <span class="telegram-btn-name">Telegram</span>
+                            <span class="telegram-btn-sub">Canal privé Maya Alves</span>
                         </div>
-                        <div class="neon-bubble">
-                            <a href="https://www.tiktok.com/@maya_alves_oo?_r=1&_t=ZN-96g07wkcLpu" target="_blank" rel="noopener" class="bubble">
-                                <div class="bubble-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M16.6 5.82s.51.64 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z" fill="url(#tk2)"/><defs><linearGradient id="tk2" x1="4" y1="3" x2="20" y2="21"><stop stop-color="#ff0050"/><stop offset="1" stop-color="#00f2ea"/></linearGradient></defs></svg></div>
-                                <div class="bubble-info"><span class="bubble-name">TikTok</span><span class="bubble-handle">@maya_alves_oo</span></div>
-                                <span class="bubble-arrow">&rsaquo;</span>
-                            </a>
-                        </div>
-                        <div class="neon-bubble">
-                            <a href="https://www.instagram.com/maya_alves_oo?igsh=ZWJwY3YwYjgwb3My" target="_blank" rel="noopener" class="bubble">
-                                <div class="bubble-icon"><svg viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#feda75"/><stop offset="25%" stop-color="#fa7e1e"/><stop offset="50%" stop-color="#d62976"/><stop offset="75%" stop-color="#962fbf"/><stop offset="100%" stop-color="#4f5bd5"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="url(#ig)" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="url(#ig)" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="url(#ig)"/></svg></div>
-                                <div class="bubble-info"><span class="bubble-name">Instagram</span><span class="bubble-handle">@maya_alves_oo</span></div>
-                                <span class="bubble-arrow">&rsaquo;</span>
-                            </a>
-                        </div>
-                        <div class="neon-bubble">
-                            <a href="https://www.reddit.com/user/Maya_Alves_Rvl/" target="_blank" rel="noopener" class="bubble">
-                                <div class="bubble-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FF4500"/><path d="M18.5 10.8c0-.83-.67-1.5-1.5-1.5-.4 0-.76.16-1.03.42-1.01-.72-2.38-1.18-3.9-1.24l.72-3.37 2.32.5a1.07 1.07 0 1 0 .12-.56l-2.6-.56a.3.3 0 0 0-.35.23l-.8 3.76c-1.56.04-2.96.5-3.99 1.24A1.49 1.49 0 0 0 5 10.8c0 .55.3 1.03.74 1.29a2.72 2.72 0 0 0-.04.47c0 2.37 2.76 4.3 6.17 4.3 3.4 0 6.17-1.93 6.17-4.3 0-.16-.02-.32-.04-.47.46-.26.76-.74.76-1.29z" fill="white"/><circle cx="9.5" cy="12" r="1" fill="#FF4500"/><circle cx="14.5" cy="12" r="1" fill="#FF4500"/><path d="M9.8 14.8s.65.82 2.2.82 2.2-.82 2.2-.82" fill="none" stroke="#FF4500" stroke-width=".6" stroke-linecap="round"/></svg></div>
-                                <div class="bubble-info"><span class="bubble-name">Reddit</span><span class="bubble-handle">u/Maya_Alves_Rvl</span></div>
-                                <span class="bubble-arrow">&rsaquo;</span>
-                            </a>
-                        </div>
-                        <div class="neon-bubble">
-                            <a href="https://x.com/MayaAlvesRvl" target="_blank" rel="noopener" class="bubble">
-                                <div class="bubble-icon"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#ffffff"/></svg></div>
-                                <div class="bubble-info"><span class="bubble-name">X</span><span class="bubble-handle">@MayaAlvesRvl</span></div>
-                                <span class="bubble-arrow">&rsaquo;</span>
-                            </a>
-                        </div>
-                    </div>
+                        <span class="bubble-arrow">&rsaquo;</span>
+                    </a>
                 </div>
             </div>
 
